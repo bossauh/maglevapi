@@ -11,7 +11,7 @@ setup(
     name="maglevapi",
     packages=["maglevapi", "maglevapi.flask_utils",
               "maglevapi.os_interface", "maglevapi.testing"],
-    version="1.1",
+    version="1.2",
     license="MIT",
     description="This is a personal library that I've developed that has a collection of functions and classes that allows me to develop new programs much much faster.",
     author="Philippe Mathew",
