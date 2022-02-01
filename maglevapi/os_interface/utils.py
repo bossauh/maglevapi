@@ -74,7 +74,7 @@ def load_json(path: str) -> dict:
         return json.load(f)
 
 
-def dump_json(path: str, data: Union[dict, list]) -> str:
+def dump_json(path: str, data: Union[dict, list], indent: int = 4) -> str:
     """
     Shortcut for dumping data to a json file.
 
@@ -84,9 +84,16 @@ def dump_json(path: str, data: Union[dict, list]) -> str:
         The path to the json file.
     `data` : Union[dict, list]
         The json serializable object to dump.
+    `indent` int
+        Indentation. Defaults to 4.
 
     Returns
     -------
     `str` :
         The path where the json was dumped.
     """
+
+    with open(path, "w+") as f:
+        json.dump(data, f, indent=indent)
+    
+    return path
