@@ -45,7 +45,7 @@ def join_path(*path: str, cwd: Union[str, bool] = None) -> str:
 
     path = list(path)
     if len(path) < 2:
-        path = path.split("/")
+        path = path[0].split("/")
 
     if (cwd is None) or (cwd is True):
         cwd = os.getcwd()
