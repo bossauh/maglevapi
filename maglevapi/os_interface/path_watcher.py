@@ -97,7 +97,7 @@ class PathWatcher:
     def get_mtime(self, path: str) -> float:
         if Path(path).is_dir():
             dir_ = Path(path)
-            mtimes = [dir_.joinpath(root).joinpath(f).start(
+            mtimes = [dir_.joinpath(root).joinpath(f).stat(
             ).st_mtime for root, _, files in os.walk(dir_) for f in files]
             return max(mtimes)
         else:
