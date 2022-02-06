@@ -2,9 +2,11 @@ import asyncio
 import gc
 import inspect
 import traceback
+import os
 from ..os_interface import utils
 from ..profiling import async_timeit
 from termcolor import colored
+from pathlib import Path
 
 
 class Testing:
@@ -47,6 +49,9 @@ class Testing:
             )),
             kwargs=params
         )
+
+        if self.save_path:
+            Path(os.path.dirname(self.save_path)).mkdir(exist_ok=True, parents=True)
 
     def format_fail(self, test_name: str, tb: str) -> str:
         return self.format[1].replace("{test_name}", test_name) \
