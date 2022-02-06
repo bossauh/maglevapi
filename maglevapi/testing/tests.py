@@ -72,6 +72,7 @@ class Testing:
                 if inspect.iscoroutinefunction(attr):
 
                     try:
+                        print(colored(f"Running test '{item}'...", "yellow"), end="\r")
                         t, _ = await async_timeit(attr)
                         s += 1
                         to_save.append(f"OK! '{item}' - '{t}'")
