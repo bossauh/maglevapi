@@ -17,7 +17,7 @@ setup(
     author="Philippe Mathew",
     author_email="philmattdev@gmail.com",
     url="https://github.com/bossauh/maglevapi",
-    download_url="",
+    download_url="https://github.com/bossauh/maglevapi/archive/refs/tags/1_4.tar.gz",
     keywords=["helper", "toolkit"],
     install_requires=install_requires,
     classifiers=[
