@@ -3,7 +3,7 @@ import gc
 import inspect
 import traceback
 import os
-from ..os_interface import utils
+from .. import basic
 from ..profiling import async_timeit
 from termcolor import colored
 from pathlib import Path
@@ -38,7 +38,7 @@ class Testing:
         self.spacing, \
         self.gc_collect, \
         self.stop_on_exception, \
-        self.format = utils.quick_kwargs(
+        self.format = basic.quick_kwargs(
             "save_path",
             ("spacing", 0.5),
             ("gc_collect", False),

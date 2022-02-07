@@ -1,29 +1,6 @@
 import json
 import os
-from typing import Any, Tuple, Union
-
-
-def quick_kwargs(*keys, kwargs: dict, default: Any = None) -> Tuple[Any]:
-    """
-    Instead of doing...
-    >>> value_1 = kwargs.get("value_1")
-    >>> value_2 = kwargs.get("value_2", "foo")
-    >>> value_3 = kwargs.get("value_3")
-
-    This compacts that so you can do...
-    >>> value_1, value_2, value_3 = quick_kwargs("value_1", ("value_2", "foo"), "value_3")
-    """
-
-    return_values = []
-    for k in keys:
-        if isinstance(k, tuple):
-            return_values.append(kwargs.get(k[0], k[1]))
-            continue
-        return_values.append(kwargs.get(k, default))
-
-    if len(return_values) > 1:
-        return tuple(return_values)
-    return return_values[0]
+from typing import Union
 
 
 def join_path(*path: str, cwd: Union[str, bool] = None) -> str:
