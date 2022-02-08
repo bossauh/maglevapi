@@ -11,12 +11,23 @@ def quick_kwargs(*keys, kwargs: dict, default: Any = None) -> Tuple[Any]:
 
     This compacts that so you can do...
     >>> value_1, value_2, value_3 = quick_kwargs("value_1", ("value_2", "foo"), "value_3")
+
+    You could also make certain parameters required by doing so...
+    >>> value_1 = quick_kwargs(("value_1", "__required__"))
+    - If value_1 does not exist, a TypeError with a message of "missing required parameter 'value_1'" will be raised.
     """
 
     return_values = []
     for k in keys:
         if isinstance(k, tuple):
-            return_values.append(kwargs.get(k[0], k[1]))
+            default = k[1]
+            if default == "__required__":
+                if kwargs.get(k[0]) is None:
+                    raise TypeError(f"missing required parameter '{k[0]}'")
+                else:
+                    return_values.append(kwargs.get(k[0]))
+            else:
+                return_values.append(kwargs.get(k[0], default))
             continue
         return_values.append(kwargs.get(k, default))
 
